@@ -1,100 +1,111 @@
-Sensor Management API
-Overview
-This project is a RESTful API for managing sensors and their measurements, built using Spring Boot. It provides endpoints to register sensors, add measurements, retrieve measurement data, and count rainy days. The API is documented using OpenAPI (Swagger) for easy exploration and testing.
-Features
+Here's a professional and clean `README.md` for your GitHub project, following the standard GitHub README format:
 
-Register new sensors with a unique name.
-Add measurements for a sensor, including temperature value and raining status.
-Retrieve all measurements.
-Count the number of rainy days based on measurement data.
+---
 
-API Endpoints
-Sensor Registration
+# 🌦️ Sensor & Measurement REST API
 
-POST /api/v1/sensors
-Description: Register a new sensor.
-Request Body:{
+This project provides a RESTful API for managing sensors and their measurements. Built with **Spring Boot**, it allows users to register sensors, log environmental measurements, retrieve data, and count the number of rainy days. The project also features API documentation via **OpenAPI (Swagger)** for easy exploration and testing.
+
+## 🔗 API Documentation
+
+Explore the API via Swagger UI:  
+**[OpenAPI Swagger Documentation](https://)**
+
+---
+
+## 🚀 Features
+
+- Register new sensors
+- Submit new measurements (e.g., temperature, rain status)
+- Retrieve all measurements
+- Count total rainy days
+
+---
+
+## 📦 Endpoints
+
+### Sensor
+
+#### ✅ Register Sensor (Successful)
+- **Method:** `POST`
+- **URL:** `/api/v1/sensors`
+- **Request Body:**
+```json
+{
   "name": "TestName"
 }
+```
 
+#### ❌ Register Sensor (Unsuccessful)
+- **Method:** `POST`
+- **URL:** `/api/v1/sensors`
+- **Request Body:**
+```json
+{
+  "name": "TestName"
+}
+```
+> ⚠️ This fails when the sensor with the same name already exists.
 
-Success Response: Sensor registered successfully.
-Error Response: Returns an error if the sensor name is invalid or already exists.
+---
 
+### Measurement
 
-
-Add Measurement
-
-POST /api/v1/measurements
-Description: Add a measurement for a registered sensor.
-Request Body:{
+#### 📥 Add Measurement
+- **Method:** `POST`
+- **URL:** `/api/v1/measurements`
+- **Request Body:**
+```json
+{
   "value": 24.5,
   "raining": true,
   "sensor": {
     "name": "TestName"
   }
 }
+```
 
+#### 📊 Get All Measurements
+- **Method:** `GET`
+- **URL:** `/api/v1/measurements`
 
-Success Response: Measurement added successfully.
-Error Response: Returns an error if the sensor does not exist or the data is invalid.
+#### 🌧️ Get Rainy Days Count
+- **Method:** `GET`
+- **URL:** `/api/v1/measurements/rainy-days-count`
 
+---
 
+## 🛠️ Tech Stack
 
-Get All Measurements
+- Java
+- Spring Boot
+- OpenAPI / Swagger
+- REST API
 
-GET /api/v1/measurements
-Description: Retrieve all measurements.
-Response: List of all measurements in the system.
+---
 
+## 🧪 Testing
 
+You can use Postman or Swagger UI to test all endpoints. Make sure the backend server is running before sending requests.
 
-Get Rainy Days Count
+---
 
-GET /api/v1/measurements/rainy-days-count
-Description: Count the number of days with rainy measurements.
-Response: Number of rainy days.
+## 📂 Project Structure
 
+```
+src
+├── main
+│   ├── java
+│   └── resources
+└── test
+```
 
+---
 
-Getting Started
-Prerequisites
+## 📄 License
 
-Java 17 or later
-Maven
-Spring Boot
-Swagger UI (included for API documentation)
+This project is open-source and available under the [MIT License](LICENSE).
 
-Installation
+---
 
-Clone the repository:git clone <repository-url>
-
-
-Navigate to the project directory:cd sensor-management-api
-
-
-Build the project:mvn clean install
-
-
-Run the application:mvn spring-boot:run
-
-
-
-Accessing the API
-
-The API will be available at http://localhost:8080.
-Access the Swagger UI for interactive documentation at http://localhost:8080/swagger-ui.html.
-
-Usage
-
-Register a sensor using the POST /api/v1/sensors endpoint.
-Add measurements for the sensor using the POST /api/v1/measurements endpoint.
-Retrieve all measurements with GET /api/v1/measurements.
-Check the count of rainy days with GET /api/v1/measurements/rainy-days-count.
-
-Documentation
-The API is documented using OpenAPI (Swagger). You can explore and test the endpoints directly from the Swagger UI.
-Contributing
-Contributions are welcome! Please fork the repository and submit a pull request with your changes.
-License
-This project is licensed under the MIT License.
+Let me know if you'd like to add sections like "How to Run", "Contributing", or a sample `.env` setup!
